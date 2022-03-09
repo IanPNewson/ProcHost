@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ProcHost": {
+      "commandName": "Project",
+      "commandLineArgs": "..\\..\\..\\sampleconfig.json"
+    }
+  }
+}

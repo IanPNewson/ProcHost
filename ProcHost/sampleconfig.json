@@ -1,0 +1,37 @@
+{
+  "Children": [
+    {
+      "Name": "Server",
+      "Process": {
+        "Executable": "C:\\Users\\Ian\\source\\repos\\Hub\\HubServerConsoleHost\\bin\\Debug\\net6.0\\HubServerConsoleHost.exe",
+        "Arguments": ""
+      },
+      "OutputSettings": {
+        "TextColor": "Blue"
+      },
+      "DelayStart": 0
+    },
+    {
+      "Name": "Classify",
+      "Process": {
+        "Executable": "C:\\Users\\Ian\\source\\repos\\StfcTfHelp\\ClassifyCaptures\\bin\\Debug\\net6.0\\ClassifyCaptures.exe",
+        "Arguments": ""
+      },
+      "OutputSettings": {
+        "TextColor": "DarkGreen"
+      },
+      "DelayStart": 1000
+    },
+    {
+      "Name": "Capture",
+      "Process": {
+        "Executable": "C:\\Users\\Ian\\source\\repos\\STFC\\StfcWindowOverlayBot\\CaptureStfcWindow\\CaptureStfcWindowAndClicks\\bin\\Debug\\net6.0-windows\\CaptureStfcWindowAndClicks.exe",
+        "Arguments": ""
+      },
+      "OutputSettings": {
+        "TextColor": "Cyan"
+      },
+      "DelayStart": 1000
+    }
+  ]
+}
