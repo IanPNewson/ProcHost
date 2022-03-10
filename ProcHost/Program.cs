@@ -9,6 +9,11 @@ if (!configFile.Exists)
 
 var configs = JsonConvert.DeserializeObject<Configuration>(File.ReadAllText(configFile.FullName));
 
+var loggers = new LoggerCollection();
+
+foreach(var loggerType in configs.Loggers)
+    loggers.Add(loggerType.Instantiate<ILogger>());
+
 OutputSettings? currentSettings = null;
 
 var announce = (ChildProcess config) =>
@@ -51,6 +56,8 @@ var tasks = configs.Children
         var process = Process.Start(startArgs)!;
         process.OutputDataReceived += (sender, args) =>
         {
+            if (string.IsNullOrWhiteSpace(args.Data)) return;
+
             announce(config);
             lock (Console.Out)
             {
@@ -58,6 +65,8 @@ var tasks = configs.Children
                 Console.ForegroundColor = config.OutputSettings.TextColor;
 
                 Write(args.Data ?? "");
+
+                loggers.LogOutput(args.Data, config);
             }
         };
         process.BeginOutputReadLine();

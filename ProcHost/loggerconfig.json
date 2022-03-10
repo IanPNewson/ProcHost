@@ -1,0 +1,62 @@
+{
+  "Children": [
+    {
+      "Name": "Server",
+      "Process": {
+        "Executable": "C:\\Users\\Ian\\source\\repos\\Hub\\HubServerConsoleHost\\bin\\Debug\\net6.0\\HubServerConsoleHost.exe",
+        "Arguments": ""
+      },
+      "OutputSettings": {
+        "TextColor": 9,
+        "ErrorColor": 12,
+        "BackColor": 0
+      },
+      "DelayStart": 0
+    },
+    {
+      "Name": "Classify",
+      "Process": {
+        "Executable": "C:\\Users\\Ian\\source\\repos\\StfcTfHelp\\ClassifyCaptures\\bin\\Debug\\net6.0\\ClassifyCaptures.exe",
+        "Arguments": ""
+      },
+      "OutputSettings": {
+        "TextColor": 2,
+        "ErrorColor": 12,
+        "BackColor": 0
+      },
+      "DelayStart": 1000
+    },
+    {
+      "Name": "Capture",
+      "Process": {
+        "Executable": "C:\\Users\\Ian\\source\\repos\\STFC\\StfcWindowOverlayBot\\CaptureStfcWindow\\CaptureStfcWindowAndClicks\\bin\\Debug\\net6.0-windows\\CaptureStfcWindowAndClicks.exe",
+        "Arguments": ""
+      },
+      "OutputSettings": {
+        "TextColor": 11,
+        "ErrorColor": 12,
+        "BackColor": 0
+      },
+      "DelayStart": 1000
+    }
+  ],
+  "Loggers": [
+    {
+      "Type": "ProcHost.Model.MongoDbLogger, ProcHost, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "ConstructorParams": [
+        {
+          "Value": "mongodb://iansdesktop",
+          "Name": "connectionString"
+        },
+        {
+          "Value": "StfcHub",
+          "Name": "databaseName"
+        },
+        {
+          "Value": "ConsoleLogs",
+          "Name": "collectionName"
+        }
+      ]
+    }
+  ]
+}
