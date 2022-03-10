@@ -25,7 +25,7 @@ public class MongoDbLogger : ILogger
 
     public void LogOutput(string message, ChildProcess process)
     {
-        _collection.InsertOne(new
+        _collection.InsertOneAsync(new
         {
             Time = DateTime.Now,
             Machine = Environment.MachineName,

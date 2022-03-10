@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ProcHost.ChildTracker;
 using ProcHost.Model;
 using System.Diagnostics;
 static void Write(string str) => Console.WriteLine(str);
@@ -15,6 +16,8 @@ foreach(var loggerType in configs.Loggers)
     loggers.Add(loggerType.Instantiate<ILogger>());
 
 OutputSettings? currentSettings = null;
+
+var processes = new List<Process>();
 
 var announce = (ChildProcess config) =>
 {
@@ -54,6 +57,8 @@ var tasks = configs.Children
         startArgs.RedirectStandardError = true;
 
         var process = Process.Start(startArgs)!;
+        processes.Add(process);
+        ChildProcessTracker.AddProcess(process);
         process.OutputDataReceived += (sender, args) =>
         {
             if (string.IsNullOrWhiteSpace(args.Data)) return;
@@ -81,3 +86,5 @@ Console.WriteLine("Type 'exit' and press enter to quit");
 while (Console.ReadLine() != "exit") ;
 
 Console.WriteLine("Stopping...");
+
+
