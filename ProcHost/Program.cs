@@ -63,9 +63,9 @@ var tasks = configs.Children
         {
             if (string.IsNullOrWhiteSpace(args.Data)) return;
 
-            announce(config);
             lock (Console.Out)
             {
+                announce(config);
                 Console.BackgroundColor = config.OutputSettings.BackColor;
                 Console.ForegroundColor = config.OutputSettings.TextColor;
 
